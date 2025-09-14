@@ -11,4 +11,4 @@
 
 The project is intentionally minimal with no complex checkout or payments, so the focus is on full‑stack fundamentals and clean structure.
 
-## Website link: sammamahmed.github.io/WebShop.com
+## Website link: sammamahmed.github.io/WebShop/
