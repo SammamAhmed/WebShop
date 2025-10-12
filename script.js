@@ -257,7 +257,7 @@ function setReviewStatus(msg, type) {
 function initializeReviews() {
   // Load reviews if reviews list exists
   loadReviews();
-  
+
   // Set up form submission if form exists
   if (reviewForm) {
     reviewForm.addEventListener("submit", async (e) => {
@@ -366,29 +366,30 @@ function initializeCartFunctionality() {
   const productCards = document.querySelectorAll(".product-card");
   productCards.forEach((card) => {
     const addToCartBtn = card.querySelector(".buy-btn");
-    if (!addToCartBtn || addToCartBtn.tagName.toLowerCase() !== "button") return;
-    
+    if (!addToCartBtn || addToCartBtn.tagName.toLowerCase() !== "button")
+      return;
+
     // Skip if already has event listener
     if (addToCartBtn.dataset.cartBound === "true") return;
-    
+
     addToCartBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      
+
       const name = card.querySelector("h3").textContent.trim();
       const priceText = card.querySelector("p")
         ? card.querySelector("p").textContent.trim()
         : "0";
       const price = parseFloat(priceText.replace(/[^0-9.]/g, "")) || 0;
-      
+
       if (!cart[name]) cart[name] = { quantity: 1, price };
       else cart[name].quantity += 1;
-      
+
       saveCart();
       updateCartCount();
-      
+
       showPopup(`${name} added to cart!`, { duration: 2000 });
     });
-    
+
     // Mark as bound to prevent duplicate bindings
     addToCartBtn.dataset.cartBound = "true";
   });
