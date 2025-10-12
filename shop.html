@@ -1,85 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop | WebShop.com</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="header">
-    <nav class="navbar">
-      <div class="logo">
-        <a href="index.html">WebShop.com</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop | WebShop.com</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="index.html">WebShop.com</a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html" class="active">Shop</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://www.cs.mun.ca/~sammama/">About</a></li>
+        </ul>
+        <div class="header-actions">
+          <a href="auth.html" class="sign-in-btn">Sign in</a>
+          <button
+            class="get-started-btn"
+            onclick="window.location.href='auth.html'"
+          >
+            Get started
+          </button>
+          <div class="cart-icon" id="cart-btn">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V16.5M9 19.5C9.8 19.5 10.5 20.2 10.5 21S9.8 22.5 9 22.5 7.5 21.8 7.5 21 8.2 19.5 9 19.5ZM20 19.5C20.8 19.5 21.5 20.2 21.5 21S20.8 22.5 20 22.5 18.5 21.8 18.5 21 19.2 19.5 20 19.5Z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span class="cart-count" id="cart-count">0</span>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="featured-products">
+      <h2>Our Products</h2>
+      <div class="search-bar">
+        <input
+          type="text"
+          id="product-search"
+          placeholder="Search products..."
+        />
+        <button id="search-btn" type="button" aria-label="Search">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <circle cx="10" cy="10" r="7" stroke="#555" stroke-width="2" />
+            <line
+              x1="16"
+              y1="16"
+              x2="21"
+              y2="21"
+              stroke="#555"
+              stroke-width="2"
+            />
+          </svg>
+        </button>
       </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html" class="active">Shop</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="https://www.cs.mun.ca/~sammama/">About</a></li>
+      <div class="product-cards">
+        <div class="product-card">
+          <img src="JScode.png" alt="JavaScript Code Package" />
+          <h3>JScode</h3>
+          <p>$99.99</p>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="HitGub.png" alt="HitGub Premium" />
+          <h3>HitGub</h3>
+          <p>$129.99</p>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="MangoDB.png" alt="MangoDB Database" />
+          <h3>MangoDB</h3>
+          <p>$49.99</p>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+          <img src="Emptyproduct.png" alt="Your Product Here" />
+          <h3>Contact us to list your product here</h3>
+          <p>-</p>
+          <a href="contact.html" class="buy-btn">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <div id="cart-menu" class="cart-menu">
+      <h3>Your Cart</h3>
+      <div id="cart-items"></div>
+      <div id="cart-total"></div>
+      <button
+        id="remove-all-btn"
+        class="buy-btn"
+        style="background: #e53935; margin-bottom: 12px"
+      >
+        Remove All
+      </button>
+      <button id="close-cart-menu" class="buy-btn">Close</button>
+    </div>
+
+    <footer class="footer">
+      <p>&copy; 2025 WebShop.com | All Rights Reserved</p>
+      <ul class="social-links">
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Twitter</a></li>
       </ul>
-      <button class="cart-btn" id="cart-btn">
-        Cart <span id="cart-count">0</span>
-      </button>
-    </nav>
-  </header>
-
-  <section class="featured-products">
-    <h2>Our Products</h2>
-    <div class="search-bar">
-      <input type="text" id="product-search" placeholder="Search products...">
-      <button id="search-btn" type="button" aria-label="Search">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-          <circle cx="10" cy="10" r="7" stroke="#555" stroke-width="2"/>
-          <line x1="16" y1="16" x2="21" y2="21" stroke="#555" stroke-width="2"/>
-        </svg>
-      </button>
-    </div>
-    <div class="product-cards">
-      <div class="product-card">
-        <img src="JScode.png" alt="JavaScript Code Package">
-        <h3>JScode</h3>
-        <p>$99.99</p>
-        <button class="buy-btn">Add to Cart</button>
-      </div>
-      <div class="product-card">
-        <img src="HitGub.png" alt="HitGub Premium">
-        <h3>HitGub</h3>
-        <p>$129.99</p>
-        <button class="buy-btn">Add to Cart</button>
-      </div>
-      <div class="product-card">
-        <img src="MangoDB.png" alt="MangoDB Database">
-        <h3>MangoDB</h3>
-        <p>$49.99</p>
-        <button class="buy-btn">Add to Cart</button>
-      </div>
-      
-      <div class="product-card">
-        <img src="Emptyproduct.png" alt="Your Product Here">
-        <h3>Contact us to list your product here</h3>
-        <p>-</p>
-        <a href="contact.html" class="buy-btn">Contact Us</a>
-      </div>
-    </div>
-  </section>
-
-  <div id="cart-menu" class="cart-menu">
-    <h3>Your Cart</h3>
-    <div id="cart-items"></div>
-    <div id="cart-total"></div>
-    <button id="remove-all-btn" class="buy-btn" style="background:#e53935;margin-bottom:12px;">Remove All</button>
-    <button id="close-cart-menu" class="buy-btn">Close</button>
-  </div>
-
-  <footer class="footer">
-    <p>&copy; 2025 WebShop.com | All Rights Reserved</p>
-    <ul class="social-links">
-      <li><a href="#">Facebook</a></li>
-      <li><a href="#">Instagram</a></li>
-      <li><a href="#">Twitter</a></li>
-    </ul>
-  </footer>
-  <script src="script.js"></script>
-</body>
+    </footer>
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>

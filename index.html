@@ -1,92 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WebShop.com</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <header class="header">
-        <nav class="navbar">
-            <div class="logo">
-                <a href="#">WebShop.com</a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="https://www.cs.mun.ca/~sammama/">About</a></li>
-            </ul>
-            <button class="cart-btn" id="cart-btn">
-                Cart <span id="cart-count">0</span>
-            </button>
-        </nav>
-        <div class="hero">
-            <h1>Shop the Best Deals on Your Favorite Products!</h1>
-            <p>This is a practice website and DOES NOT deal with any transactional activities</p>
-            <a href="shop.html" class="cta-btn">Shop Now</a>
+      <nav class="navbar">
+        <div class="logo">
+          <a href="#">WebShop.com</a>
         </div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://www.cs.mun.ca/~sammama/">About</a></li>
+        </ul>
+        <div class="header-actions">
+          <a href="auth.html" class="sign-in-btn">Sign in</a>
+          <button
+            class="get-started-btn"
+            onclick="window.location.href='auth.html'"
+          >
+            Get started
+          </button>
+          <div class="cart-icon" id="cart-btn">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V16.5M9 19.5C9.8 19.5 10.5 20.2 10.5 21S9.8 22.5 9 22.5 7.5 21.8 7.5 21 8.2 19.5 9 19.5ZM20 19.5C20.8 19.5 21.5 20.2 21.5 21S20.8 22.5 20 22.5 18.5 21.8 18.5 21 19.2 19.5 20 19.5Z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span class="cart-count" id="cart-count">0</span>
+          </div>
+        </div>
+      </nav>
     </header>
 
+    <section class="hero">
+      <h1>Shop the Best Deals on Your Favorite Products!</h1>
+      <p>
+        This is a practice website and DOES NOT deal with any transactional
+        activities
+      </p>
+      <a href="shop.html" class="cta-btn">Shop Now</a>
+    </section>
+
     <section class="featured-products">
-        <h2>Featured Products</h2>
-        <div class="product-cards">
-            <div class="product-card">
-                <img src="JScode.png" alt="Product 1">
-                <h3>JScode</h3>
-                <p>$99.99</p>
-                <button class="buy-btn">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="HitGub.png" alt="Product 2">
-                <h3>HitGub</h3>
-                <p>$129.99</p>
-                <button class="buy-btn">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="MangoDB.png" alt="Product 3">
-                <h3>MangoDB</h3>
-                <p>$49.99</p>
-                <button class="buy-btn">Add to Cart</button>
-            </div>
+      <h2>Featured Products</h2>
+      <div class="product-cards">
+        <div class="product-card">
+          <img src="JScode.png" alt="Product 1" />
+          <h3>JScode</h3>
+          <p>$99.99</p>
+          <button class="buy-btn">Add to Cart</button>
         </div>
+        <div class="product-card">
+          <img src="HitGub.png" alt="Product 2" />
+          <h3>HitGub</h3>
+          <p>$129.99</p>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="MangoDB.png" alt="Product 3" />
+          <h3>MangoDB</h3>
+          <p>$49.99</p>
+          <button class="buy-btn">Add to Cart</button>
+        </div>
+      </div>
     </section>
 
     <!-- Review Section -->
     <section class="reviews">
-        <h2>Liked us? Leave a review for us to improve</h2>
-        <p>We value your feedback! Share your thoughts below:</p>
-        <form class="review-form" id="review-form" novalidate>
-            <label for="reviewer-name">Your Name</label>
-            <input type="text" id="reviewer-name" name="name" placeholder="Enter your name" required>
-            <label for="review-message">Your Review</label>
-            <textarea id="review-message" name="message" rows="4" placeholder="Write your review here..." required></textarea>
-            <button type="submit" class="buy-btn" id="review-submit">Submit Review</button>
-            <div id="review-status" class="form-status" aria-live="polite"></div>
-        </form>
-        <div id="reviews-list"></div>
+      <h2>Liked us? Leave a review for us to improve</h2>
+      <p>We value your feedback! Share your thoughts below:</p>
+      <form class="review-form" id="review-form" novalidate>
+        <label for="reviewer-name">Your Name</label>
+        <input
+          type="text"
+          id="reviewer-name"
+          name="name"
+          placeholder="Enter your name"
+          required
+        />
+        <label for="review-message">Your Review</label>
+        <textarea
+          id="review-message"
+          name="message"
+          rows="4"
+          placeholder="Write your review here..."
+          required
+        ></textarea>
+        <button type="submit" class="buy-btn" id="review-submit">
+          Submit Review
+        </button>
+        <div id="review-status" class="form-status" aria-live="polite"></div>
+      </form>
+      <div id="reviews-list"></div>
     </section>
 
     <div id="cart-menu" class="cart-menu">
-        <h3>Your Cart</h3>
-        <div id="cart-items"></div>
-        <div id="cart-total"></div>
-        <button id="remove-all-btn" class="buy-btn" style="background:#ff9900;margin-bottom:12px;">Remove All</button>
-        <button id="close-cart-menu" class="buy-btn">Close</button>
+      <h3>Your Cart</h3>
+      <div id="cart-items"></div>
+      <div id="cart-total"></div>
+      <button
+        id="remove-all-btn"
+        class="buy-btn"
+        style="background: #ff9900; margin-bottom: 12px"
+      >
+        Remove All
+      </button>
+      <button id="close-cart-menu" class="buy-btn">Close</button>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2025 WebShop.com | All Rights Reserved</p>
-        <ul class="social-links">
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">Twitter</a></li>
-        </ul>
+      <p>&copy; 2025 WebShop.com | All Rights Reserved</p>
+      <ul class="social-links">
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Twitter</a></li>
+      </ul>
     </footer>
 
+    <script src="auth.js"></script>
     <script src="script.js"></script>
     <div id="global-popup" class="popup" role="status" aria-live="polite"></div>
-</body>
+  </body>
 </html>
