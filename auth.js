@@ -120,12 +120,48 @@ class AuthManager {
       );
     }
 
-    // Logout functionality
+    // Logout functionality (fallback for old logout buttons)
     document.addEventListener("click", (e) => {
-      if (e.target.classList.contains("logout-btn")) {
+      if (
+        e.target.classList.contains("logout-btn") &&
+        !e.target.closest(".dropdown-menu")
+      ) {
         this.logout();
       }
     });
+  }
+
+  initializeUserDropdown() {
+    const userAvatarBtn = document.getElementById("user-avatar-btn");
+    const dropdownMenu = document.getElementById("user-dropdown-menu");
+    const logoutBtn = document.getElementById("logout-btn");
+
+    if (userAvatarBtn && dropdownMenu) {
+      // Toggle dropdown on avatar click
+      userAvatarBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdownMenu.classList.toggle("show");
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener("click", (e) => {
+        if (
+          !userAvatarBtn.contains(e.target) &&
+          !dropdownMenu.contains(e.target)
+        ) {
+          dropdownMenu.classList.remove("show");
+        }
+      });
+
+      // Handle logout
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          this.logout();
+          dropdownMenu.classList.remove("show");
+        });
+      }
+    }
   }
 
   handleSignIn(e) {
@@ -330,13 +366,30 @@ class AuthManager {
 
       headerActions.innerHTML = `
                 <div class="user-profile">
-                    <div class="user-avatar" 
-                         data-tooltip="${this.currentUser.firstName} ${
+                    <div class="user-dropdown">
+                        <div class="user-avatar" id="user-avatar-btn">
+                            ${userInitials}
+                        </div>
+                        <div class="dropdown-menu" id="user-dropdown-menu">
+                            <div class="dropdown-header">
+                                <div class="dropdown-user-info">
+                                    <strong>${this.currentUser.firstName} ${
         this.currentUser.lastName || ""
-      }<br>${this.currentUser.email}">
-                        ${userInitials}
+      }</strong>
+                                    <span>${this.currentUser.email}</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item logout-btn" id="logout-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <polyline points="16,17 21,12 16,7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <line x1="21" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Logout
+                            </button>
+                        </div>
                     </div>
-                    <button class="logout-btn">Logout</button>
                 </div>
                 <div class="cart-icon" id="cart-btn">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -364,6 +417,9 @@ class AuthManager {
       if (typeof window.initializeCartFunctionality === "function") {
         window.initializeCartFunctionality();
       }
+
+      // Initialize user dropdown functionality
+      this.initializeUserDropdown();
     }, 100); // Small delay to ensure DOM is updated
   }
 
